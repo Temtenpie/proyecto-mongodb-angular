@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:4200';
+app.use(cors({ origin: allowedOrigin }));
+
+// Resto de los Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
