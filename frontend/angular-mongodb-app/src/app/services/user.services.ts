@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, ApiResponse } from '../interfaces/user.interfaces';
+import { environment } from '../../environments/environment'; // <-- 1. IMPORTA EL ENTORNO
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/api';
+  // 2. USA LA VARIABLE DEL ENTORNO EN LUGAR DE LA URL FIJA
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
